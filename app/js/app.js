@@ -1,6 +1,6 @@
-var DI = ['ui.bootstrap', 'ebizController', 'ebizModule', 'ngRoute'];
+var DI = ['ui.bootstrap', 'pseController', 'pseModule', 'ngRoute'];
 
-var app = angular.module('ebiz', DI);
+var app = angular.module('pse', DI);
 
 app.config(['$routeProvider',
 	function($routeProvider) {
@@ -10,12 +10,12 @@ app.config(['$routeProvider',
 				controller: 'log-out'
 			}).
 			when('/hr', {
-				// to call http://yourebusiness.com/admin/#/hr
+				// to call http://www.pse-screener.com/admin/#/hr
 				templateUrl: 'partials/hr-tbl.html',
 				controller: 'humanResourceCtrl'
 			}).
 			when('/app/:access_token', {
-				// to call http://yourebusiness.com/admin/#/app/:access_token
+				// to call http://www.pse-screener.com/admin/#/app/:access_token
 				templateUrl: 'partials/login.html',
 				controller: 'beaconCtrl'
 			}).

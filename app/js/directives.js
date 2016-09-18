@@ -1,9 +1,9 @@
 'use strict';
 
-var ebizModule = angular.module('ebizModule', []);
+var pseModule = angular.module('pseModule', []);
 
 /*Menu*/
-ebizModule.directive('tree', function() {
+pseModule.directive('tree', function() {
   return {
     restrict: "E",
     replace: true,
@@ -14,7 +14,7 @@ ebizModule.directive('tree', function() {
   };
 });
 
-ebizModule.directive('leaf', function($compile) {
+pseModule.directive('leaf', function($compile) {
   return {
     restrict: "E",
     replace: true,

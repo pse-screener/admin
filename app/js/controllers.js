@@ -1,8 +1,8 @@
 'use strict';
 
-var ebizController = angular.module('ebizController', []);
+var pseController = angular.module('pseController', []);
 
-ebizController.controller('treeController', function($scope) {
+pseController.controller('treeController', function($scope) {
 	$scope.tree = [
 		{
 			name: "Administration",
@@ -45,7 +45,7 @@ ebizController.controller('treeController', function($scope) {
 	];
 });
 
-ebizController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
+pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	function($scope, $window, $http) {
 		var employeeConfig = {
 			method: 'GET',
@@ -60,7 +60,7 @@ ebizController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token")) {
-				$window.location.href = "http://www.yourebusiness.com/public/#/login";
+				$window.location.href = "http://www.pse-screener.com/public/#/login";
 			}
 		} else {
 			console.log("No web storage support.");
@@ -68,9 +68,9 @@ ebizController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-ebizController.controller('beaconCtrl', ['$scope', '$routeParams', '$http', '$location',
+pseController.controller('beaconCtrl', ['$scope', '$routeParams', '$http', '$location',
 	function($scope, $routeParams, $http, $location) {
-		var absUrl = "http://www.yourebusiness.com/verify_token";
+		var absUrl = "http://www.pse-screener.com/verify_token";
 		var config = {
 			headers: {
 				Accept: 'Application/json',
@@ -87,15 +87,18 @@ ebizController.controller('beaconCtrl', ['$scope', '$routeParams', '$http', '$lo
 			console.log("Error in beaconCtrl.");
 		}
 
+		console.log("param: ", $routeParams.access_token);
 		$http.get(absUrl, config).then(successCallback, errorCallback);
 	}
 ]);
 
-ebizController.controller('welcomeCtrl', ['$scope', '$window',
+pseController.controller('welcomeCtrl', ['$scope', '$window',
 	function($scope, $window) {
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token")) {
-				$window.location.href = "http://www.yourebusiness.com/public/#/";
+				$window.location.href = "http://www.pse-screener.com/public/#/";
+			} else {
+				$window.location.href = "http://www.pse-screener.com/admin/#/";
 			}
 		} else {
 			console.log("No web storage support.");
@@ -103,11 +106,11 @@ ebizController.controller('welcomeCtrl', ['$scope', '$window',
 	}
 ]);
 
-ebizController.controller('log-out', ['$window',
+pseController.controller('log-out', ['$window',
 	function($window) {
 		if (typeof(Storage) !== "undefined") {
 			sessionStorage.removeItem("access_token");
-			$window.location.href = "http://www.yourebusiness.com/public/#/login";
+			$window.location.href = "http://www.pse-screener.com/public/#/login";
 		}
 	}
 ]);
