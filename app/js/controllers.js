@@ -15,16 +15,6 @@ pseController.controller('treeController', function($scope) {
 			name: "divider",
 			link: "#"
 		}, {
-			name: "Business Partners",
-			link: "#",
-			subtree: [{
-			  name: "Master Data",
-			  link: "#"
-			}]
-		}, {
-			name: "divider",
-			link: "#"
-		}, {
 			name: "Human Resource",
 			link: "#",
 			subtree: [{
