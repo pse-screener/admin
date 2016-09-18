@@ -14,7 +14,7 @@ app.config(['$routeProvider',
 				templateUrl: 'partials/hr-tbl.html',
 				controller: 'humanResourceCtrl'
 			}).
-			when('/app/:access_token', {
+			when('/app/', {
 				// to call http://www.pse-screener.com/admin/#/app/:access_token
 				templateUrl: 'partials/login.html',
 				controller: 'beaconCtrl'

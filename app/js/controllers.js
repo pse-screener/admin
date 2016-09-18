@@ -68,26 +68,25 @@ pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-pseController.controller('beaconCtrl', ['$scope', '$routeParams', '$http', '$location',
-	function($scope, $routeParams, $http, $location) {
+pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
+	function($scope, $http, $location, $window) {
 		var absUrl = "http://www.pse-screener.com/verify_token";
 		var config = {
 			headers: {
 				Accept: 'Application/json',
-				Authorization: 'Bearer '.concat($routeParams.access_token)
+				Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token"))
 			}
 		};
 
 		var successCallback = function(response) {
-			window.sessionStorage.setItem("access_token", $routeParams.access_token);
 			$location.path('/');
 			console.log("Success log-in.");
 		}
 		var errorCallback = function(response) {
 			console.log("Error in beaconCtrl.");
+			$window.location.href = "http://www.pse-screener.com/public/#/";
 		}
 
-		console.log("param: ", $routeParams.access_token);
 		$http.get(absUrl, config).then(successCallback, errorCallback);
 	}
 ]);
@@ -95,11 +94,10 @@ pseController.controller('beaconCtrl', ['$scope', '$routeParams', '$http', '$loc
 pseController.controller('welcomeCtrl', ['$scope', '$window',
 	function($scope, $window) {
 		if (typeof(Storage) !== "undefined") {
-			if (!sessionStorage.getItem("access_token")) {
+			if (!sessionStorage.getItem("access_token"))
 				$window.location.href = "http://www.pse-screener.com/public/#/";
-			} else {
+			else
 				$window.location.href = "http://www.pse-screener.com/admin/#/";
-			}
 		} else {
 			console.log("No web storage support.");
 		}
