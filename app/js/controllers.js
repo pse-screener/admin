@@ -89,7 +89,7 @@ pseController.controller('welcomeCtrl', ['$scope', '$window',
 			else
 				$window.location.href = "http://www.pse-screener.com/admin/#/";
 		} else {
-			console.log("No web storage support.");
+			console.log("No web storage support. Please use updated browser.");
 		}
 	}
 ]);
