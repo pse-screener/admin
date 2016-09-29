@@ -35,29 +35,6 @@ pseController.controller('treeController', function($scope) {
 	];
 });
 
-pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
-	function($scope, $window, $http) {
-		var employeeConfig = {
-			method: 'GET',
-			url: 'http://'
-		};
-
-		$scope.records = [
-			{userId: "1", username: "abs@yopmail.com", fName: "Jhunex", lName: "Morcilla"},
-			{userId: "2", username: "simply.amazing.wizard@gmail.com", fName: "Jhun", lName: "Pio"},
-			{userId: "3", username: "ricky_abong@yahoo.com", fName: "Ricky", lName: "Abong"}
-		];
-
-		if (typeof(Storage) !== "undefined") {
-			if (!sessionStorage.getItem("access_token")) {
-				$window.location.href = "http://www.pse-screener.com/public/#/login";
-			}
-		} else {
-			console.log("No web storage support.");
-		}
-	}
-]);
-
 pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
 	function($scope, $http, $location, $window) {
 		var absUrl = "http://www.pse-screener.com/verify_token";
@@ -78,6 +55,29 @@ pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window
 		}
 
 		$http.get(absUrl, config).then(successCallback, errorCallback);
+	}
+]);
+
+pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
+	function($scope, $window, $http) {
+		var employeeConfig = {
+			method: 'GET',
+			url: 'http://'
+		};
+
+		$scope.records = [
+			{userId: "1", username: "abs@yopmail.com", fName: "Jhunex", lName: "Jun"},
+			{userId: "2", username: "simply.amazing.wizard@gmail.com", fName: "Jhun", lName: "Pio"},
+			{userId: "3", username: "amy@yahoo.com", fName: "Amy", lName: "Osbon"}
+		];
+
+		if (typeof(Storage) !== "undefined") {
+			if (!sessionStorage.getItem("access_token")) {
+				$window.location.href = "http://www.pse-screener.com/public/#/login";
+			}
+		} else {
+			console.log("No web storage support.");
+		}
 	}
 ]);
 
