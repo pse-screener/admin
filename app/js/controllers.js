@@ -60,6 +60,14 @@ pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window
 
 pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	function($scope, $window, $http) {
+		if (typeof(Storage) !== "undefined") {
+			if (!sessionStorage.getItem("access_token")) {
+				$window.location.href = "http://www.pse-screener.com/public/#/login";
+			}
+		} else {
+			console.log("No web storage support.");
+		}
+
 		var employeeConfig = {
 			method: 'GET',
 			url: 'http://'
@@ -70,16 +78,14 @@ pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 			{userId: "2", username: "simply.amazing.wizard@gmail.com", fName: "Jhun", lName: "Pio"},
 			{userId: "3", username: "amy@yahoo.com", fName: "Amy", lName: "Osbon"}
 		];
-
-		if (typeof(Storage) !== "undefined") {
-			if (!sessionStorage.getItem("access_token")) {
-				$window.location.href = "http://www.pse-screener.com/public/#/login";
-			}
-		} else {
-			console.log("No web storage support.");
-		}
 	}
 ]);
+
+/*pseController.controller('alertCtrl', [
+	function() {
+
+	}
+]);*/
 
 pseController.controller('welcomeCtrl', ['$scope', '$window',
 	function($scope, $window) {

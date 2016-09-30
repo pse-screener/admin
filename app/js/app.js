@@ -22,6 +22,9 @@ app.config(['$routeProvider',
 			when('/', {
 				templateUrl: 'partials/welcome.html',
 				controller: 'welcomeCtrl'
+			}).
+			when('/add_alert', {
+				templateUrl: 'partials/addAlert.html',
 			})
 	}
 ]);

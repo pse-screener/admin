@@ -1,33 +1,3 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div class="panel panel-default login">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Login</h3>
-                </div>
-                <div class="panel-body">
-                    <form method="post" action="#">
-                        <div class="form-group">
-                            <label htmlFor="username">Email</label>
-                            <input type="email" class="form-control" id="username" name="username" ref="username" placeholder="Username" />
-                        </div>
-                        <div class="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" ref="password" placeholder="Password" />
-                        </div>
-                        <button type="submit" class="btn btn-primary" onClick={this._onLoginSubmit}>Login</button>
-                        <Link to="forgotpassword" class="pull-right">Forgot password</Link>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            Welcome
-        </div>
-    </div>
-</div> -->
-
 <div class="container">
 	<div class="panel panel-primary">
 		<!-- Default panel contents -->
@@ -50,7 +20,11 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">Alerts</div>
 		<div class="panel-body">
-			List of companies to alert.
+			List of companies to alert. <br /><br />
+			<a href="#/add_alert" class="btn btn-primary" type="button">Add Alert</a>
+			<a href="#/edit_alert" class="btn btn-success" type="button">Edit Alert</a>
+			<a href="#/delete_alert" class="btn btn-warning" type="button">Delete Alert</a>
+			<a href="#/deleteAll_alert" class="btn btn-danger" type="button">Delete All Alert</a>
 		</div>
 
 		<table class="table">
