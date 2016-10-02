@@ -5,13 +5,13 @@
 				<div class="panel-heading">Alerts</div>
 				<div class="panel-body">
 
-					<form class="form-horizontal" method="GET">
+					<form class="form-horizontal" method="POST" action="#">
 						<div ng-controller="CompaniesCtrl">
 							<div class="form-group">
 								<label for="symbol" class="col-sm-2 control-label">Ticker</label>
 								<div class="col-sm-10">
-									<select class="form-control" id="symbol" ng-model="companySymbol" ng-change="update()">
-										<option ng-repeat="company in companies">{{company.symbol}}</option>
+									<select class="form-control" name="companyId" id="companyId" ng-model="companySymbol" ng-change="update()">
+										<option ng-repeat="company in companies" value="{{company.id}}">{{company.symbol}}</option>
 									</select>
 								</div>
 							</div>
@@ -26,7 +26,7 @@
 						<div class="form-group">
 							<label for="Price" class="col-sm-2 control-label">Price</label>
 							<div class="col-sm-10">
-								<select class="form-control" name="condition">
+								<select class="form-control" name="priceCondition">
 									<option value="MA">Move above</option>
 									<option value="MB">Move below</option>
 								</select>
@@ -35,17 +35,16 @@
 
 						<div class="form-group">							
 							<div class="col-sm-6 col-md-offset-2">
-								<input type="text" class="form-control" id="price" placeholder="Price">
+								<input type="text" class="form-control" name="price" placeholder="Price">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-primary">Add Alert</button>
+								<input type="submit" class="btn btn-primary" value="submit" />
 							</div>
 						</div>
-
-						</form>
+					</form>
 				</div>
 			</div>
 		</div>

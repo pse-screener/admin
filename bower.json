@@ -13,5 +13,8 @@
     "html5-boilerplate": "^5.3.0",
     "angular-animate": "~1.4.9",
     "angular-touch": "~1.4.9"
+  },
+  "devDependencies": {
+    "angular-cookies": "1.4.9"
   }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-var pseController = angular.module('pseController', []);
+var pseController = angular.module('pseController', ['ngCookies']);
 
 pseController.controller('treeController', function($scope) {
 	$scope.tree = [
@@ -81,15 +81,17 @@ pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-pseController.controller('CompaniesCtrl', ['$scope', '$http',
-	function($scope, $http) {
+pseController.controller('CompaniesCtrl', ['$scope', '$http', '$cookieStore',
+	function($scope, $http, $cookieStore) {
 		$scope.companyName = "Select company above";
+		console.log("Cookie: ", $cookieStore.get('laravel_token'));
 
 		var absUrl = "http://www.pse-screener.com/company";
 		var config = {
 			headers: {
-				Accept: 'Application/json',
-				Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token"))
+				'Accept': 'Application/json',
+				// Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token"))
+				// 'X-CSRF-TOKEN': $cookieStore.get('laravel_token')
 			}
 		};
 
@@ -100,7 +102,7 @@ pseController.controller('CompaniesCtrl', ['$scope', '$http',
 			console.log("Error: Cannot retrieve companies.");
 		}
 
-		$http.get(absUrl, config).then(successCallback, errorCallback);
+		// $http.get(absUrl, config).then(successCallback, errorCallback);
 
 		/**/
 		$scope.update = function() {
