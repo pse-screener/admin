@@ -37,7 +37,7 @@ pseController.controller('treeController', function($scope) {
 
 pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
 	function($scope, $http, $location, $window) {
-		var absUrl = "http://www.pse-screener.com/verify_token";
+		var absUrl = "http://www.pse-screener.com/api/v1/verify_token";
 		var config = {
 			headers: {
 				Accept: 'Application/json',
@@ -81,17 +81,17 @@ pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-pseController.controller('CompaniesCtrl', ['$scope', '$http', '$cookieStore',
-	function($scope, $http, $cookieStore) {
+pseController.controller('CompaniesCtrl', ['$scope', '$http',
+	function($scope, $http) {
 		$scope.companyName = "Select company above";
-		console.log("Cookie: ", $cookieStore.get('laravel_token'));
 
-		var absUrl = "http://www.pse-screener.com/company";
+		console.log("storage", localStorage.getItem("laravel_session"));
+
+		var absUrl = "http://www.pse-screener.com/api/v1/company";
 		var config = {
 			headers: {
-				'Accept': 'Application/json',
-				// Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token"))
-				// 'X-CSRF-TOKEN': $cookieStore.get('laravel_token')
+				Accept: 'Application/json',
+				Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token")),
 			}
 		};
 
@@ -102,11 +102,11 @@ pseController.controller('CompaniesCtrl', ['$scope', '$http', '$cookieStore',
 			console.log("Error: Cannot retrieve companies.");
 		}
 
-		// $http.get(absUrl, config).then(successCallback, errorCallback);
+		$http.get(absUrl, config).then(successCallback, errorCallback);
 
 		/**/
 		$scope.update = function() {
-			var absUrl = "http://www.pse-screener.com/company/".concat($scope.companySymbol);
+			var absUrl = "http://www.pse-screener.com/api/v1/company/".concat($scope.companySymbol);
 			var config = {
 				headers: {
 					Accept: 'Application/json',
