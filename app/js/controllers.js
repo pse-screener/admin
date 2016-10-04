@@ -81,7 +81,7 @@ pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-pseController.controller('CompaniesCtrl', ['$scope', '$http',
+/*pseController.controller('CompaniesCtrl', ['$scope', '$http',
 	function($scope, $http) {
 		$scope.companyName = "Select company above";
 
@@ -104,7 +104,7 @@ pseController.controller('CompaniesCtrl', ['$scope', '$http',
 
 		$http.get(absUrl, config).then(successCallback, errorCallback);
 
-		/**/
+		// Update function.
 		$scope.update = function() {
 			var absUrl = "http://www.pse-screener.com/api/v1/company/".concat($scope.companySymbol);
 			var config = {
@@ -124,7 +124,7 @@ pseController.controller('CompaniesCtrl', ['$scope', '$http',
 			$http.get(absUrl, config).then(successCallback, errorCallback);
 		}
 	}
-]);
+]);*/
 
 pseController.controller('welcomeCtrl', ['$scope', '$window',
 	function($scope, $window) {
