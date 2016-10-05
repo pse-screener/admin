@@ -2,7 +2,7 @@
 
 pseController.controller('addAlertCtrl', ['$scope', '$http',
 	function($scope, $http) {
-		$scope.companyName = "Select company above.";
+		$scope.companyName = "Select company above";
 
 		var absUrl = "http://www.pse-screener.com/api/v1/company";
 		var config = {
@@ -20,6 +20,7 @@ pseController.controller('addAlertCtrl', ['$scope', '$http',
 		}
 
 		$http.get(absUrl, config).then(successCallback, errorCallback);
+
 
 		// When select company is changed.
 		$scope.update = function() {
@@ -43,7 +44,10 @@ pseController.controller('addAlertCtrl', ['$scope', '$http',
 
 
 		// When alert form is clicked.
-		$scope.processForm = function() {
+		$scope.processForm = function(isValid) {
+			if (!isValid)
+				return;
+
 			var headers = {
 				'Accept': 'application/json',
 				'Authorization': 'Bearer '.concat(sessionStorage.getItem("access_token")),
@@ -52,7 +56,7 @@ pseController.controller('addAlertCtrl', ['$scope', '$http',
 			var formData = {
 				companyId: $scope.companyId,
 				priceCondition: $scope.priceCondition,
-				// price: $scope.price,
+				price: $scope.price,
 			};
 
 			$http({
@@ -62,15 +66,16 @@ pseController.controller('addAlertCtrl', ['$scope', '$http',
 				headers	: headers,
 			})
 			.success(function(data) {
-				console.log("Success: ", data);
-				if (!data['code'])
+				if (!data['code']) {
+					$scope.addAlertMessage = "alert alert-success";
 					$scope.message = "Saving has been successful.";
-				else
-					$scope.message = "Not okay.";
+				} else {
+					$scope.message = "Saving unsuccessful.";
+				}
 			})
 			.error(function(data) {
-				// $scope.message = data[0];
-				$scope.message = "Error found here.";
+				$scope.message = data[0];
+				$scope.addAlertMessage = "alert alert-danger";
 				console.log("Error: ", data);
 			});
 		}
