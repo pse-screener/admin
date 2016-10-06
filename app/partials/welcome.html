@@ -22,18 +22,18 @@
 		<div class="panel-body">
 			List of companies to alert. <br /><br />
 			<a href="#/add_alert" class="btn btn-primary" type="button">Add Alert</a>
-			<a href="#/edit_alert" class="btn btn-success" type="button">Edit Alert</a>
-			<a href="#/delete_alert" class="btn btn-warning" type="button">Delete Alert</a>
 			<a href="#/deleteAll_alert" class="btn btn-danger" type="button">Delete All Alert</a>
 		</div>
 
 		<table class="table">
-			<thead><tr><th>Company</th><th>Price</th></tr></thead>
+			<thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th></tr></thead>
 			<tbody>
-				<tr><td>2GO</td><td>1.012</td></tr>
-				<tr><td>ABS</td><td>12.01</td></tr>
-				<tr><td>GMA</td><td>2.3001</td></tr>
-				<tr><td>AC</td><td>123.15</td></tr>
+				<tr ng-repeat="alert in alerts">
+					<td><a href="#/edit_alert">{{alert.id}}</a></td>
+					<td>{{alert.symbol}}</td>
+					<td>{{alert.companyName}}</td>
+					<td>{{alert.priceCondition == 'movesBelow' ? 'Moves Below' : 'Moves Above'}}</td>
+					<td>{{alert.price}}</td></tr>
 			</tbody>
 		</table>
 	</div>
