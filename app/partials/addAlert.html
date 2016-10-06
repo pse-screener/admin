@@ -5,6 +5,8 @@
 				<div class="panel-heading">Alerts</div>
 				<div class="panel-body" ng-controller="addAlertCtrl">
 					<div class="{{addAlertMessage}}" role="alert">{{message}}</div>
+
+					cdrf token: {{ csrf_token() }}
 					
 					<form class="form-horizontal" name="addAlertForm" ng-submit="processForm(addAlertForm.$valid)" novalidate>
 						<div class="form-group">

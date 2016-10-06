@@ -13,6 +13,7 @@ pseController.controller('addAlertCtrl', ['$scope', '$http',
 		};
 
 		var successCallback = function(response) {
+			console.log(response);
 			$scope.companies = response.data;
 		}
 		var errorCallback = function(response) {
