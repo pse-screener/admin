@@ -13,7 +13,6 @@ pseController.controller('addAlertCtrl', ['$scope', '$http',
 		};
 
 		var successCallback = function(response) {
-			console.log(response);
 			$scope.companies = response.data;
 		}
 		var errorCallback = function(response) {
@@ -71,7 +70,8 @@ pseController.controller('addAlertCtrl', ['$scope', '$http',
 					$scope.addAlertMessage = "alert alert-success";
 					$scope.message = "Saving has been successful.";
 				} else {
-					$scope.message = "Saving unsuccessful.";
+					$scope.addAlertMessage = "alert alert-danger";
+					$scope.message = data['message'];
 				}
 			})
 			.error(function(data) {

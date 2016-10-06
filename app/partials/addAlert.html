@@ -5,8 +5,6 @@
 				<div class="panel-heading">Alerts</div>
 				<div class="panel-body" ng-controller="addAlertCtrl">
 					<div class="{{addAlertMessage}}" role="alert">{{message}}</div>
-
-					cdrf token: {{ csrf_token() }}
 					
 					<form class="form-horizontal" name="addAlertForm" ng-submit="processForm(addAlertForm.$valid)" novalidate>
 						<div class="form-group">
@@ -25,7 +23,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="Price" class="col-sm-2 control-label">Price</label>
+							<label for="priceCondition" class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
 								<select class="form-control" name="priceCondition" ng-model="priceCondition" required>
 									<option value="MA">Move above</option>
@@ -34,9 +32,10 @@
 							</div>
 						</div>
 
-						<div class="form-group">							
-							<div class="col-sm-6 col-md-offset-2">
-								<input type="text" name="price" class="form-control" ng-model="price" required placeholder="0.0000">
+						<div class="form-group">
+							<label for="price" class="col-sm-2 control-label">Price</label>
+							<div class="col-sm-10">
+								<input type="text" id="price" name="price" class="form-control" ng-model="price" required placeholder="0.0000">
 							</div>
 						</div>
 
