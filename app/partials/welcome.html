@@ -29,7 +29,7 @@
 			<thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th></tr></thead>
 			<tbody>
 				<tr ng-repeat="alert in alerts">
-					<td><a href="#/edit_alert">{{alert.id}}</a></td>
+					<td><a href="#/edit_alert/{{alert.id}}/{{alert.symbol}}/{{alert.priceCondition}}/{{alert.price}}">{{alert.id}}</a></td>
 					<td>{{alert.symbol}}</td>
 					<td>{{alert.companyName}}</td>
 					<td>{{alert.priceCondition == 'movesBelow' ? 'Moves Below' : 'Moves Above'}}</td>

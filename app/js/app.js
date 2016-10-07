@@ -26,7 +26,7 @@ app.config(['$routeProvider',
 			.when('/add_alert', {
 				templateUrl: 'partials/addAlert.html',
 			})
-			.when('/edit_alert', {
+			.when('/edit_alert/:id/:symbol/:priceCondition/:price', {
 				templateUrl: 'partials/editAlert.html',
 			})
 	}
