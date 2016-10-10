@@ -1,4 +1,4 @@
-var DI = ['ui.bootstrap', 'pseController', 'pseModule', 'ngRoute'];
+var DI = ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'ngSanitize', 'pseController'];
 
 var app = angular.module('pse', DI);
 

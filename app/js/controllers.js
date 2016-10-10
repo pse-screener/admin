@@ -2,39 +2,6 @@
 
 var pseController = angular.module('pseController', ['ngCookies']);
 
-pseController.controller('treeController', function($scope) {
-	$scope.tree = [
-		{
-			name: "Administration",
-			link: "#",
-			subtree: [{
-				name: "Set up",
-				link: "#"
-			}]
-		}, {
-			name: "divider",
-			link: "#"
-		}, {
-			name: "Human Resource",
-			link: "#",
-			subtree: [{
-			  name: "Employee Records",
-			  link: "/admin/#/hr"
-			}]
-		}, {
-			name: "divider",
-			link: "#"
-		},{
-			name: "Reports",
-			link: "#",
-			subtree: [{
-			  name: "Transactions",
-			  link: "#"
-			}]
-		}
-	];
-});
-
 pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
 	function($scope, $http, $location, $window) {
 		var absUrl = "http://www.pse-screener.com/api/v1/verify_token";

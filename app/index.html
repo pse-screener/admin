@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="admin" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="admin" class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="pse" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="pse" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="pse" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="en" ng-app="pse" class="no-js"> <!--<![endif]-->
 <head>
@@ -10,16 +10,41 @@
   <title>Admin</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link href="css/style.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
-  <div ng-controller="treeController">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script type="text/javascript" src="http://www.pse-screener.com/admin/bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="http://www.pse-screener.com/admin/bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/controllers/addAlertCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/editAlertCtrl.js"></script>
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+<style>
+    .horizontal-collapse {
+        height: 70px;
+    }
+    .navbar-collapse.in {
+        overflow-y: hidden;
+    }
+
+    /*http://www.bootply.com/86684*/
+    .dropdown-submenu{position:relative;}
+    .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+    .dropdown-submenu:hover>.dropdown-menu{display:block;}
+    .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+    .dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+    .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+</style>
+
+<div>
     <nav class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+        <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -27,50 +52,50 @@
         </button>
         <a class="navbar-brand" href="#/">PSE</a>
       </div>
-      
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">        
+      <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
         <ul class="nav navbar-nav">
-          <li dropdown>
-            <a href="#" dropdown-toggle>
-              Modules
-              <b class='caret'></b>
-            </a>
-            <tree tree='tree'></tree>
-          </li>
+                <li class="dropdown" uib-dropdown>
+                    <a role="button" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">Modules <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Administration</a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Set-up</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Human Resource</a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Employee</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>                        
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Reports</a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Report 1</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li dropdown>
-            <a href="#" dropdown-toggle>
-              Account
-              <b class='caret'></b>
-            </a>
-            <ul class='dropdown-menu'>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Settings</a></li>
-              <li><a href="#/log-out">Log-out</a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" uib-dropdown>
+                    <a role="button" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">Account<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#/log-out">Log-out</a></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
+      </div>
     </nav>
-  </div>
+</div>
 
-  <div ng-view></div>  
+<div ng-view></div>
 
-  <!-- In production use:
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script type="text/javascript" src="http://www.pse-screener.com/admin/bower_components/angular/angular.min.js"></script>
-  <script type="text/javascript" src="http://www.pse-screener.com/admin/bower_components/angular-route/angular-route.js"></script>
-  <script type="text/javascript" src="http://www.pse-screener.com/admin/bower_components/angular-cookies/angular-cookies.min.js"></script>
-  <script type="text/javascript" src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
-  <script type="text/javascript" src="js/app.js"></script>
-  <script type="text/javascript" src="js/controllers.js"></script>
-  <script type="text/javascript" src="js/directives.js"></script>
-  <script type="text/javascript" src="js/controllers/addAlertCtrl.js"></script>
-  <script type="text/javascript" src="js/controllers/editAlertCtrl.js"></script>
+  </body>
 
-  <script src="http://www.pse-screener.com/admin/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-</body>
 </html>
