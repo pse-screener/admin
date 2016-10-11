@@ -24,8 +24,8 @@
             <div class="panel-heading">Alerts</div>
             <div class="panel-body">
                 List of companies to alert. <br /><br />
-                <a href="#/add_alert" class="btn btn-primary" type="button">Add Alert</a>
-                <a href="#/deleteAll_alert" class="btn btn-danger" type="button">Delete All Alert</a>
+                <a href="#/add_alert" class="btn btn-default" type="button">Add Alert</a>
+                <a href="#/deleteAll_alert" class="btn btn-default" type="button">Delete All Alert</a>
             </div>
 
             <table class="table">
@@ -37,7 +37,7 @@
                         <td>{{alert.companyName}}</td>
                         <td>{{alert.priceCondition == 'movesBelow' ? 'Moves Below' : 'Moves Above'}}</td>
                         <td>{{alert.price}}</td>
-                        <td><button type="button" class="btn btn-danger btn-sm" ng-click="$ctrl.open('{{alert.id}}')">Delete</button></td>
+                        <td><button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.open('{{alert.id}}')">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
