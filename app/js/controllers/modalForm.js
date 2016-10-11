@@ -19,12 +19,14 @@ app.controller('ModalCtrl', function ($uibModal, $log, $document) {
             appendTo: undefined,
             resolve: {
                 items: function () {
-                    return $ctrl.items;
+                    //return $ctrl.items;
+                    return alertId;
                 }
             }
         });
 
         modalInstance.result.then(function (selectedItem) {
+            console.log("Log: ", selectedItem);
             $ctrl.selected = selectedItem;
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());

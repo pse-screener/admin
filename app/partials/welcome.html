@@ -3,15 +3,10 @@
     <div ng-controller="ModalCtrl as $ctrl" class="">
         <script type="text/ng-template" id="myModalContent.html">
             <div class="modal-header">
-                <h3 class="modal-title" id="modal-title">Are you sure you want to delete the alert?</h3>
+                <h3 class="modal-title" id="modal-title">Alert</h3>
             </div>
             <div class="modal-body" id="modal-body">
-                <ul>
-                    <li ng-repeat="item in $ctrl.items">
-                        <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ item }}</a>
-                    </li>
-                </ul>
-                Selected: <b>{{ $ctrl.selected.item }}</b>
+                Are you sure you want to delete the alert?
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
@@ -24,11 +19,11 @@
             <div class="panel-heading">Alerts</div>
             <div class="panel-body">
                 List of companies to alert. <br /><br />
-                <a href="#/add_alert" class="btn btn-default" type="button">Add Alert</a>
-                <a href="#/deleteAll_alert" class="btn btn-default" type="button">Delete All Alert</a>
+                <a href="#/add_alert" class="btn btn-default btn-sm" type="button">Add Alert</a>
+                <a href="#/deleteAll_alert" class="btn btn-default btn-sm" type="button">Delete All Alert</a>
             </div>
 
-            <table class="table">
+            <table class="table table-hover table-condensed">
                 <thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th><th>Action</th></tr></thead>
                 <tbody>
                     <tr ng-repeat="alert in alerts">
@@ -37,7 +32,7 @@
                         <td>{{alert.companyName}}</td>
                         <td>{{alert.priceCondition == 'movesBelow' ? 'Moves Below' : 'Moves Above'}}</td>
                         <td>{{alert.price}}</td>
-                        <td><button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.open('{{alert.id}}')">Delete</button></td>
+                        <td><button type="button" class="btn btn-default btn-xs" ng-click="$ctrl.open(alert.id)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -50,7 +45,7 @@
                 <!-- Lurem epsum -->
             </div>
 
-            <table class="table">
+            <table class="table table-hover table-condensed">
                 <!-- <thead><tr><th>Subscription</th><th>Basic</th></tr></thead> -->
                 <tbody>
                     <tr><td>Subscription</td><td>Free</td></tr>
