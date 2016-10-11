@@ -1,6 +1,6 @@
 'use strict'
 
-pseController.controller('editAlertCtrl', ['$scope', '$http', '$routeParams', 
+app.controller('editAlertCtrl', ['$scope', '$http', '$routeParams', 
 	function($scope, $http, $routeParams) {
 		$scope.message = "";
 		$scope.alertId = $routeParams.id;

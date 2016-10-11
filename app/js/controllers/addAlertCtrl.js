@@ -1,6 +1,6 @@
 'use strict'
 
-pseController.controller('addAlertCtrl', ['$scope', '$http',
+app.controller('addAlertCtrl', ['$scope', '$http',
 	function($scope, $http) {
 		$scope.companyName = "Select company above";
 

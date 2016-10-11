@@ -1,8 +1,6 @@
 'use strict';
 
-var pseController = angular.module('pseController', ['ngCookies']);
-
-pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
+app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
 	function($scope, $http, $location, $window) {
 		var absUrl = "http://www.pse-screener.com/api/v1/verify_token";
 		var config = {
@@ -25,7 +23,7 @@ pseController.controller('beaconCtrl', ['$scope', '$http', '$location', '$window
 	}
 ]);
 
-pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
+app.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	function($scope, $window, $http) {
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token")) {
@@ -48,8 +46,8 @@ pseController.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-pseController.controller('welcomeCtrl', ['$scope', '$window', '$http',
-	function($scope, $window, $http) {
+app.controller('dashboardCtrl', ['$scope', '$window', '$http',
+	function($scope, $window, $http, $uibModal, $log, $document) {
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token"))
 				$window.location.href = "http://www.pse-screener.com/public/#/";
@@ -78,7 +76,7 @@ pseController.controller('welcomeCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-pseController.controller('log-out', ['$window',
+app.controller('log-out', ['$window',
 	function($window) {
 		if (typeof(Storage) !== "undefined") {
 			sessionStorage.removeItem("access_token");

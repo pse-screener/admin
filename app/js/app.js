@@ -1,6 +1,7 @@
-var DI = ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'ngSanitize', 'pseController'];
+// var DI = ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'ngSanitize', 'pseController'];
+var DI = ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'ngSanitize'];
 
-var app = angular.module('pse', DI);
+var app = angular.module('ui.bootstrap.demo', DI);
 
 app.config(['$routeProvider',
 	function($routeProvider) {
@@ -15,13 +16,12 @@ app.config(['$routeProvider',
 				controller: 'humanResourceCtrl'
 			})
 			.when('/app/', {
-				// to call http://www.pse-screener.com/admin/#/app/:access_token
 				templateUrl: 'partials/login.html',
 				controller: 'beaconCtrl'
 			})
 			.when('/', {
 				templateUrl: 'partials/welcome.html',
-				controller: 'welcomeCtrl'
+				controller: 'dashboardCtrl'
 			})
 			.when('/add_alert', {
 				templateUrl: 'partials/addAlert.html',
