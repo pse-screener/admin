@@ -19,7 +19,7 @@ app.config(['$routeProvider',
 				controller: 'beaconCtrl'
 			})
 			.when('/', {
-				templateUrl: 'partials/welcome.html',
+				templateUrl: 'partials/dashboard.html',
 				controller: 'dashboardCtrl'
 			})
 			.when('/add_alert', {

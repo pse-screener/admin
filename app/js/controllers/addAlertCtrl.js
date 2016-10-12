@@ -23,7 +23,7 @@ app.controller('addAlertCtrl', ['$scope', '$http',
 
 
 		// When select company is changed.
-		$scope.update = function() {
+		$scope.selectCompany = function() {
 			var absUrl = "http://www.pse-screener.com/api/v1/company/".concat($scope.companyId);
 			var config = {
 				headers: {

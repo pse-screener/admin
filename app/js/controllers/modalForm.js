@@ -19,11 +19,13 @@ app.controller('ModalCtrl', function ($uibModal, $log, $document) {
             appendTo: undefined,
             resolve: {
                 items: function () {
-                    //return $ctrl.items;
-                    return alertId;
+                    return $ctrl.items;
+                    // return alertId;
                 }
             }
         });
+
+        // console.log(modalInstance);
 
         modalInstance.result.then(function (selectedItem) {
             console.log("Log: ", selectedItem);
@@ -40,6 +42,7 @@ app.controller('ModalCtrl', function ($uibModal, $log, $document) {
 app.controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
     var $ctrl = this;
         $ctrl.items = items;
+        console.log("Items are ", items);
         $ctrl.selected = {
             item: $ctrl.items[0]
         };

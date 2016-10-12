@@ -46,36 +46,6 @@ app.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-app.controller('dashboardCtrl', ['$scope', '$window', '$http',
-	function($scope, $window, $http, $uibModal, $log, $document) {
-		if (typeof(Storage) !== "undefined") {
-			if (!sessionStorage.getItem("access_token"))
-				$window.location.href = "http://www.pse-screener.com/public/#/";
-			else
-				$window.location.href = "http://www.pse-screener.com/admin/#/";
-		} else {
-			console.log("No web storage support. Please use updated browser.");
-		}
-
-		var absUrl = "http://www.pse-screener.com/api/v1/alert";
-		var config = {
-			headers: {
-				Accept: 'Application/json',
-				Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token")),
-			}
-		};
-
-		var successCallback = function(response) {
-			$scope.alerts = response.data;
-		}
-		var errorCallback = function(response) {
-			console.log("Error: Cannot retrieve alerts.");
-		}
-
-		$http.get(absUrl, config).then(successCallback, errorCallback);
-	}
-]);
-
 app.controller('log-out', ['$window',
 	function($window) {
 		if (typeof(Storage) !== "undefined") {

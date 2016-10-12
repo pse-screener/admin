@@ -10,7 +10,7 @@
 						<div class="form-group">
 							<label for="symbol" class="col-sm-2 control-label">Ticker</label>
 							<div class="col-sm-10">
-								<select class="form-control" name="companyId" ng-model="companyId" ng-change="update()" required>
+								<select class="form-control" name="companyId" ng-model="companyId" ng-change="selectCompany()" required>
 									<option ng-repeat="company in companies" value="{{company.id}}">{{company.symbol}}</option>
 								</select>
 							</div>
