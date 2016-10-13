@@ -4,20 +4,20 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 	function($scope, $window, $http, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token"))
-				$window.location.href = "http://www.pse-screener.com/public/#/";
+				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/";
 			else
-				$window.location.href = "http://www.pse-screener.com/admin/#/";
+				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/admin/#/";
 		} else {
 			console.log("No web storage support. Please use updated browser.");
 		}
 
-		var absUrl = "http://www.pse-screener.com/api/v1/alert";
+		var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/dashboard";
 		var configHeaders = {
 			headers: appConstantsFactory.getHeaders()
 		};
 
 		var successCallback = function(response) {
-			$scope.alerts = response.data;
+			$scope.alerts = response.data.alerts;
 		}
 		var errorCallback = function(response) {
 			console.log("Error: Cannot retrieve alerts.");
@@ -49,7 +49,7 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 			$http({
 				method	: 'POST',
-				url		: 'http://www.pse-screener.com/api/v1/alert/' + alertId,
+				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert/' + alertId,
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})
@@ -84,7 +84,7 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 			$http({
 				method	: 'POST',
-				url		: 'http://www.pse-screener.com/api/v1/alert/' + encodeURI(alertIDs),
+				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert/' + encodeURI(alertIDs),
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})

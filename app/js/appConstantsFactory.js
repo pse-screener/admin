@@ -12,11 +12,11 @@ app.factory('appConstantsFactory', function() {
 		'Authorization': 'Bearer '.concat(sessionStorage.getItem("access_token")),
 	};
 
-	service.getUnsecuredEndpointWithIndex = function() {
-		return _unSecuredScheme + _domain;
+	service.getSecuredEndpoint = function() {
+		return _securedScheme + _domain;
 	};
 
-	service.getUnsecuredEndpointWithoutIndex = function() {
+	service.getUnsecuredEndpoint = function() {
 		return _unSecuredScheme + _domain;
 	};
 
