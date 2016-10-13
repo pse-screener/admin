@@ -12,9 +12,10 @@
     "angular-mocks": "~1.5.8",
     "html5-boilerplate": "^5.3.0",
     "angular-animate": "~1.5.8",
-    "angular-touch": "~1.5.8"
-  },
-  "devDependencies": {
-    "angular-cookies": "1.5.8"
+    "angular-touch": "~1.5.8",
+    "angular-cookies": "1.5.8",
+    "smartmenus": "^1.0.0",
+    "angular-sanitize": "^1.5.8",
+    "angular-bootstrap": "^2.2.0"
   }
 }

@@ -17,41 +17,44 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Alerts</div>
         <div class="panel-body">
-            List of companies to alert. <br /><br />
+            Sea ad lorem noster habemus, eum aliquando accommodare ne. Diceret phaedrum eu eos, vel ea velit dicit maiestatis. Te pri omnes iudico alienum, ad usu summo efficiantur. <br /><br />
             <a href="#/add_alert" class="btn btn-default btn-sm" type="button">Add Alert</a>
             <a href="" ng-click="alertDeleteAllItems(alerts);" class="btn btn-default btn-sm" type="button">Delete All Alert</a>
         </div>
 
-        <table class="table table-hover table-condensed">
-            <thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th><th>Action</th></tr></thead>
-            <tbody>
-                <tr ng-repeat="alert in alerts">
-                    <td><a href="#/edit_alert/{{alert.id}}/{{alert.symbol}}/{{alert.priceCondition}}/{{alert.price}}">{{alert.id}}</a></td>
-                    <td>{{alert.symbol}}</td>
-                    <td>{{alert.companyName}}</td>
-                    <td>{{alert.priceCondition == 'movesBelow' ? 'Moves Below' : 'Moves Above'}}</td>
-                    <td>{{alert.price}}</td>
-                    <td><button type="button" class="btn btn-default btn-xs" ng-click="alertDeleteAnItem(alert.id)">Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+                <thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th><th>Action</th></tr></thead>
+                <tbody>
+                    <tr ng-repeat="alert in alerts">
+                        <td><a href="#/edit_alert/{{alert.id}}/{{alert.symbol}}/{{alert.priceCondition}}/{{alert.price}}">{{alert.id}}</a></td>
+                        <td>{{alert.symbol}}</td>
+                        <td>{{alert.companyName}}</td>
+                        <td>{{alert.priceCondition == 'movesBelow' ? 'Moves Below' : 'Moves Above'}}</td>
+                        <td>{{alert.price}}</td>
+                        <td><button type="button" class="btn btn-default btn-xs" ng-click="alertDeleteAnItem(alert.id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Subscription Panel -->
     <div class="panel panel-primary">
         <div class="panel-heading">Subscription</div>
         <div class="panel-body">
-            <!-- Lurem epsum -->
+            Lurem epsum
         </div>
 
-        <table class="table table-hover table-condensed">
-            <!-- <thead><tr><th>Subscription</th><th>Basic</th></tr></thead> -->
-            <tbody>
-                <tr><td>Subscription</td><td>Free</td></tr>
-                <tr><td>Amount Paid</td><td>0.00</td></tr>
-                <tr><td>Subscription date</td><td>09-01-2016</td></tr>
-                <tr><td>Expiry date</td><td>10-23-2016</td></tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+                <tbody>
+                    <tr><td>Subscription</td><td>Free</td></tr>
+                    <tr><td>Amount Paid</td><td>0.00</td></tr>
+                    <tr><td>Subscription date</td><td>09-01-2016</td></tr>
+                    <tr><td>Expiry date</td><td>10-23-2016</td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

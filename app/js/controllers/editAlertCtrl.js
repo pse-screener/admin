@@ -32,7 +32,7 @@ app.controller('editAlertCtrl', ['$scope', '$http', '$routeParams',
 
 			$http({
 				method	: 'POST',
-				url		: 'http://www.pse-screener.com/api/v1/alert/'.concat($scope.alertId),
+				url		: 'http://192.168.254.104/api/v1/alert/'.concat($scope.alertId),
 				data 	: formData,
 				headers	: headers,
 			})

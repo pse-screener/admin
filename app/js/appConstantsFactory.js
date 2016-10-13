@@ -5,7 +5,7 @@ app.factory('appConstantsFactory', function() {
 
 	var	_securedScheme = 'https://';
 	var	_unSecuredScheme = 'http://';
-	var	_domain = 'www.pse-screener.com';
+	var	_domain = '192.168.254.104';
 
 	var headers = {
 		'Accept': 'application/json',

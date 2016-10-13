@@ -10,7 +10,7 @@ app.config(['$routeProvider',
 				controller: 'log-out'
 			})
 			.when('/hr', {
-				// to call http://www.pse-screener.com/admin/#/hr
+				// to call http://192.168.254.104/admin/#/hr
 				templateUrl: 'partials/hr-tbl.html',
 				controller: 'humanResourceCtrl'
 			})
@@ -27,6 +27,9 @@ app.config(['$routeProvider',
 			})
 			.when('/edit_alert/:id/:symbol/:priceCondition/:price', {
 				templateUrl: 'partials/editAlert.html',
+			})
+			.when('/subscription', {
+				templateUrl: 'partials/subscription.html'
 			})
 	}
 ]);

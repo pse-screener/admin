@@ -4,7 +4,7 @@ app.controller('addAlertCtrl', ['$scope', '$http',
 	function($scope, $http) {
 		$scope.companyName = "Select company above";
 
-		var absUrl = "http://www.pse-screener.com/api/v1/company";
+		var absUrl = "http://192.168.254.104/api/v1/company";
 		var config = {
 			headers: {
 				Accept: 'Application/json',
@@ -24,7 +24,7 @@ app.controller('addAlertCtrl', ['$scope', '$http',
 
 		// When select company is changed.
 		$scope.selectCompany = function() {
-			var absUrl = "http://www.pse-screener.com/api/v1/company/".concat($scope.companyId);
+			var absUrl = "http://192.168.254.104/api/v1/company/".concat($scope.companyId);
 			var config = {
 				headers: {
 					Accept: 'Application/json',
@@ -61,7 +61,7 @@ app.controller('addAlertCtrl', ['$scope', '$http',
 
 			$http({
 				method	: 'POST',
-				url		: 'http://www.pse-screener.com/api/v1/alert',
+				url		: 'http://192.168.254.104/api/v1/alert',
 				data 	: formData,
 				headers	: headers,
 			})
