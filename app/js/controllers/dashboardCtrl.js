@@ -1,7 +1,7 @@
 'use srict';
 
-app.controller('dashboardCtrl', ['$scope', '$window', '$http',
-	function($scope, $window, $http) {
+app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFactory',
+	function($scope, $window, $http, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token"))
 				$window.location.href = "http://www.pse-screener.com/public/#/";
@@ -12,11 +12,8 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http',
 		}
 
 		var absUrl = "http://www.pse-screener.com/api/v1/alert";
-		var config = {
-			headers: {
-				Accept: 'Application/json',
-				Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token")),
-			}
+		var configHeaders = {
+			headers: appConstantsFactory.getHeaders()
 		};
 
 		var successCallback = function(response) {
@@ -26,38 +23,76 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http',
 			console.log("Error: Cannot retrieve alerts.");
 		}
 
-		$http.get(absUrl, config).then(successCallback, errorCallback);
+		$http.get(absUrl, configHeaders).then(successCallback, errorCallback);
 
 
-		/****/
-		$scope.deleteAlert = function(alertId) {
+		/** delete an item **/
+		$scope.alertDeleteAnItem = function(alertId) {
 			var deleteAlert = $window.confirm('Are you sure you want to delete alert id '.concat(alertId, "?"));
 			if (!deleteAlert)
 				return;
 
-			var headers = {
-				'Accept': 'application/json',
-				'Authorization': 'Bearer '.concat(sessionStorage.getItem("access_token")),
-			};
-
 			var formData = {
-				alertId: $scope.alertId,
 				_method: 'DELETE'
 			};
+
+			function deleteAnObjectByKey(objects, key) {
+				var clonedObjects = Object.assign({}, objects);
+
+				for (var x in clonedObjects)
+					if (clonedObjects.hasOwnProperty(x))
+						if (clonedObjects[x].id == key)
+							delete clonedObjects[x];
+
+				$scope.alerts = clonedObjects;
+			}
 
 			$http({
 				method	: 'POST',
 				url		: 'http://www.pse-screener.com/api/v1/alert/' + alertId,
 				data 	: formData,
-				headers	: headers,
+				headers	: appConstantsFactory.getHeaders(),
 			})
 			.success(function(data) {
 				if (!data['code']) {
-					$scope.addAlertMessage = "alert alert-success";
-					$scope.message = "Saving has been successful.";
+					deleteAnObjectByKey($scope.alerts, alertId);
 				} else {
-					$scope.addAlertMessage = "alert alert-danger";
-					$scope.message = data['message'];
+					// we may use toss soon on user-defined error.
+				}
+			})
+			.error(function(data) {
+				$scope.message = data[0];
+				$scope.addAlertMessage = "alert alert-danger";
+				console.log("Error: ", data);
+			});
+		}
+
+
+		/* delete all items */
+		$scope.alertDeleteAllItems = function(alertObj) {
+			alertIDs = alertObj.map(function(elem) {
+				return elem.id;
+			}).join(',');
+
+			var deleteAllAlerts = $window.confirm('Are you sure you want to delete all alerts?');
+			if (!deleteAllAlerts)
+				return;
+
+			var formData = {
+				_method: 'DELETE'
+			};
+
+			$http({
+				method	: 'POST',
+				url		: 'http://www.pse-screener.com/api/v1/alert/' + encodeURI(alertIDs),
+				data 	: formData,
+				headers	: appConstantsFactory.getHeaders(),
+			})
+			.success(function(data) {
+				if (!data['code']) {
+					$scope.alerts = [];
+				} else {
+					// we may use toss soon on user-defined error.
 				}
 			})
 			.error(function(data) {
