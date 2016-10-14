@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
-	function($scope, $http, $location, $window) {
-		var absUrl = "http://192.168.254.104/api/v1/verify_token";
+app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window', 'appConstantsFactory',
+	function($scope, $http, $location, $window, appConstantsFactory) {
+		var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/verify_token";
 		var config = {
 			headers: {
 				Accept: 'Application/json',
@@ -16,7 +16,7 @@ app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window',
 		}
 		var errorCallback = function(response) {
 			console.log("Error in beaconCtrl.");
-			$window.location.href = "http://192.168.254.104/public/#/";
+			$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/";
 		}
 
 		$http.get(absUrl, config).then(successCallback, errorCallback);
@@ -27,7 +27,7 @@ app.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	function($scope, $window, $http) {
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token")) {
-				$window.location.href = "http://192.168.254.104/public/#/login";
+				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
 			}
 		} else {
 			console.log("No web storage support.");
@@ -50,7 +50,7 @@ app.controller('log-out', ['$window',
 	function($window) {
 		if (typeof(Storage) !== "undefined") {
 			sessionStorage.removeItem("access_token");
-			$window.location.href = "http://192.168.254.104/public/#/login";
+			$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
 		}
 	}
 ]);

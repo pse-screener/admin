@@ -1,15 +1,12 @@
 'use strict'
 
-app.controller('addAlertCtrl', ['$scope', '$http',
-	function($scope, $http) {
+app.controller('addAlertCtrl', ['$scope', '$http', 'appConstantsFactory',
+	function($scope, $http, appConstantsFactory) {
 		$scope.companyName = "Select company above";
 
-		var absUrl = "http://192.168.254.104/api/v1/company";
+		var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/company";
 		var config = {
-			headers: {
-				Accept: 'Application/json',
-				Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token")),
-			}
+			headers: appConstantsFactory.getHeaders(),
 		};
 
 		var successCallback = function(response) {
@@ -24,7 +21,7 @@ app.controller('addAlertCtrl', ['$scope', '$http',
 
 		// When select company is changed.
 		$scope.selectCompany = function() {
-			var absUrl = "http://192.168.254.104/api/v1/company/".concat($scope.companyId);
+			var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/company/".concat($scope.companyId);
 			var config = {
 				headers: {
 					Accept: 'Application/json',
@@ -48,11 +45,6 @@ app.controller('addAlertCtrl', ['$scope', '$http',
 			if (!isValid)
 				return;
 
-			var headers = {
-				'Accept': 'application/json',
-				'Authorization': 'Bearer '.concat(sessionStorage.getItem("access_token")),
-			};
-
 			var formData = {
 				companyId: $scope.companyId,
 				priceCondition: $scope.priceCondition,
@@ -61,9 +53,9 @@ app.controller('addAlertCtrl', ['$scope', '$http',
 
 			$http({
 				method	: 'POST',
-				url		: 'http://192.168.254.104/api/v1/alert',
+				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert',
 				data 	: formData,
-				headers	: headers,
+				headers	: appConstantsFactory.getHeaders(),
 			})
 			.success(function(data) {
 				if (!data['code']) {

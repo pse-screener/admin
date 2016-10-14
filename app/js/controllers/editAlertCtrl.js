@@ -1,7 +1,7 @@
 'use strict'
 
-app.controller('editAlertCtrl', ['$scope', '$http', '$routeParams', 
-	function($scope, $http, $routeParams) {
+app.controller('editAlertCtrl', ['$scope', '$http', '$routeParams', 'appConstantsFactory',
+	function($scope, $http, $routeParams, appConstantsFactory) {
 		$scope.message = "";
 		$scope.alertId = $routeParams.id;
 		$scope.symbol = $routeParams.symbol;
@@ -18,11 +18,6 @@ app.controller('editAlertCtrl', ['$scope', '$http', '$routeParams',
 			if (!isValid)
 				return;
 
-			var headers = {
-				'Accept': 'application/json',
-				'Authorization': 'Bearer '.concat(sessionStorage.getItem("access_token")),
-			};
-
 			var formData = {
 				symbol: $scope.symbol,
 				priceCondition: $scope.priceCondition,
@@ -32,9 +27,9 @@ app.controller('editAlertCtrl', ['$scope', '$http', '$routeParams',
 
 			$http({
 				method	: 'POST',
-				url		: 'http://192.168.254.104/api/v1/alert/'.concat($scope.alertId),
+				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert/'.concat($scope.alertId),
 				data 	: formData,
-				headers	: headers,
+				headers	: appConstantsFactory.getHeaders(),
 			})
 			.success(function(data) {
 				if (!data['code']) {
