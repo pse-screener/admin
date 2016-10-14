@@ -83,6 +83,10 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 		/* delete all items */
 		$scope.alertDeleteAllItems = function(alertObj) {
+			console.log("alertObj", alertObj.length);
+			if (alertObj.length <= 0)
+				return;
+
 			alertIDs = alertObj.map(function(elem) {
 				return elem.id;
 			}).join(',');
