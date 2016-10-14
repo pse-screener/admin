@@ -29,7 +29,8 @@ app.config(['$routeProvider',
 				templateUrl: 'partials/editAlert.html',
 			})
 			.when('/subscription', {
-				templateUrl: 'partials/subscription.html'
+				templateUrl: 'partials/subscription.html',
+				controller: 'subscriptionCtrl',
 			})
 	}
 ]);
