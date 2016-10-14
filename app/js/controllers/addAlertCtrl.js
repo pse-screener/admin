@@ -25,7 +25,7 @@ app.controller('addAlertCtrl', ['$scope', '$http', 'appConstantsFactory',
 			var config = {
 				headers: {
 					Accept: 'Application/json',
-					Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token"))
+					Authorization: 'Bearer '.concat(localStorage.getItem("access_token"))
 				}
 			};
 

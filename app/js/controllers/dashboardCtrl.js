@@ -3,7 +3,7 @@
 app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFactory',
 	function($scope, $window, $http, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
-			if (!sessionStorage.getItem("access_token"))
+			if (!localStorage.getItem("access_token"))
 				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/";
 			else
 				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/admin/#/";
@@ -33,7 +33,7 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 			$scope.expiryDate = response.data.subscriptions[0].expiryDate;
 		}
 		var errorCallback = function(response) {
-			console.log("Error: Cannot retrieve alerts.");
+			console.log("Error: Cannot retrieve alerts.", response);
 		}
 
 		$http.get(absUrl, configHeaders).then(successCallback, errorCallback);
@@ -83,7 +83,6 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 		/* delete all items */
 		$scope.alertDeleteAllItems = function(alertObj) {
-			console.log("alertObj", alertObj.length);
 			if (alertObj.length <= 0)
 				return;
 

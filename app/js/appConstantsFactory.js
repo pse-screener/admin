@@ -10,7 +10,7 @@ app.factory('appConstantsFactory', function() {
 
 	var headers = {
 		'Accept': 'application/json',
-		'Authorization': 'Bearer '.concat(sessionStorage.getItem("access_token")),
+		'Authorization': 'Bearer ' + localStorage.getItem("access_token"),
 	};
 
 	service.getSecuredEndpoint = function() {

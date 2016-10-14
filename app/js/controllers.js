@@ -4,10 +4,7 @@ app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window', 'appCon
 	function($scope, $http, $location, $window, appConstantsFactory) {
 		var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/verify_token";
 		var config = {
-			headers: {
-				Accept: 'Application/json',
-				Authorization: 'Bearer '.concat(sessionStorage.getItem("access_token"))
-			}
+			headers: appConstantsFactory.getHeaders()
 		};
 
 		var successCallback = function(response) {
@@ -26,7 +23,7 @@ app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window', 'appCon
 app.controller('humanResourceCtrl', ['$scope', '$window', '$http', 'appConstantsFactory',
 	function($scope, $window, $http, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
-			if (!sessionStorage.getItem("access_token")) {
+			if (!localStorage.getItem("access_token")) {
 				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
 			}
 		} else {
@@ -49,7 +46,7 @@ app.controller('humanResourceCtrl', ['$scope', '$window', '$http', 'appConstants
 app.controller('log-out', ['$window', 'appConstantsFactory',
 	function($window, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
-			sessionStorage.removeItem("access_token");
+			localStorage.removeItem("access_token");
 			$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
 		}
 	}
