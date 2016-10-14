@@ -30,7 +30,7 @@
                         <td><a href="#/edit_alert/{{alert.id}}/{{alert.symbol}}/{{alert.priceCondition}}/{{alert.price}}">{{alert.id}}</a></td>
                         <td>{{alert.symbol}}</td>
                         <td>{{alert.companyName}}</td>
-                        <td>{{alert.priceCondition == 'movesBelow' ? 'Moves Below' : 'Moves Above'}}</td>
+                        <td>{{alert.priceCondition == 'movesBelow' ? 'Moves below' : 'Moves above'}}</td>
                         <td>{{alert.price}}</td>
                         <td><button type="button" class="btn btn-default btn-xs" ng-click="alertDeleteAnItem(alert.id)">Delete</button></td>
                     </tr>
@@ -49,10 +49,10 @@
         <div class="table-responsive">
             <table class="table table-hover table-condensed">
                 <tbody>
-                    <tr><td>Subscription</td><td>Free</td></tr>
-                    <tr><td>Amount Paid</td><td>0.00</td></tr>
-                    <tr><td>Subscription date</td><td>09-01-2016</td></tr>
-                    <tr><td>Expiry date</td><td>10-23-2016</td></tr>
+                    <tr><td>Subscription</td><td>{{type}}</td></tr>
+                    <tr><td>Amount Paid</td><td>{{amountPaid}}</td></tr>
+                    <tr><td>Subscription date</td><td>{{subscriptionDate}}</td></tr>
+                    <tr><td>Expiry date</td><td>{{expiryDate}}</td></tr>
                 </tbody>
             </table>
         </div>

@@ -18,6 +18,19 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 		var successCallback = function(response) {
 			$scope.alerts = response.data.alerts;
+
+			var type = response.data.subscriptions[0].subscriptionType;
+
+			if (type != 'Free') {
+				var re = /(\d+)(.*)/i;
+				var result = re.exec(type);
+				type = result[1].concat(' ', result[2]);
+			}
+
+			$scope.type = type;
+			$scope.amountPaid = response.data.subscriptions[0].amountPaid;
+			$scope.subscriptionDate = response.data.subscriptions[0].subscriptionDate;
+			$scope.expiryDate = response.data.subscriptions[0].expiryDate;
 		}
 		var errorCallback = function(response) {
 			console.log("Error: Cannot retrieve alerts.");
