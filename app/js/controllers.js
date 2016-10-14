@@ -23,8 +23,8 @@ app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window', 'appCon
 	}
 ]);
 
-app.controller('humanResourceCtrl', ['$scope', '$window', '$http',
-	function($scope, $window, $http) {
+app.controller('humanResourceCtrl', ['$scope', '$window', '$http', 'appConstantsFactory',
+	function($scope, $window, $http, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
 			if (!sessionStorage.getItem("access_token")) {
 				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
@@ -46,8 +46,8 @@ app.controller('humanResourceCtrl', ['$scope', '$window', '$http',
 	}
 ]);
 
-app.controller('log-out', ['$window',
-	function($window) {
+app.controller('log-out', ['$window', 'appConstantsFactory',
+	function($window, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
 			sessionStorage.removeItem("access_token");
 			$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
