@@ -28,16 +28,6 @@
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<style>
-    /* Sub-menu;
-    http://www.bootply.com/86684*/
-    .dropdown-submenu{position:relative;}
-    .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
-    .dropdown-submenu:hover>.dropdown-menu{display:block;}
-    .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
-    .dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
-    .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
-</style>
 
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
@@ -52,28 +42,17 @@
     <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
         <ul class="nav navbar-nav">
             <li class="dropdown" uib-dropdown>
-                <a role="button" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">Modules <b class="caret"></b></a>
+                <a role="button" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">Administration <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">Administration</a>
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#/subscription">Subscription</a></li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">Human Resource</a>
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#/hr">Employee</a></li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>                        
-                    <li class="dropdown-submenu">
-                        <a tabindex="-1" href="#">Reports</a>
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">Subscription Report</a></li>
-                        </ul>
-                    </li>
+                    <li><a tabindex="-1" href="#/subscription"> Subscription </a></li>
+                </ul>
+            </li>
+            <li class="dropdown" uib-dropdown>
+                <a role="button" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">Reports <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#"> Report A </a></li>
+                    <li><a tabindex="-1" href="#"> Report B </a></li>
+                    <li><a tabindex="-1" href="#"> Report C </a></li>
                 </ul>
             </li>
         </ul>
