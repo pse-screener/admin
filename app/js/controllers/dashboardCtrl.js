@@ -19,6 +19,9 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 		var successCallback = function(response) {
 			$scope.alerts = response.data.alerts;
 
+			if (response.data.subscriptions.length <= 0)
+				return;
+
 			var type = response.data.subscriptions[0].subscriptionType;
 
 			if (type != 'Free') {
