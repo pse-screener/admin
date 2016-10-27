@@ -1,27 +1,59 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-4 col-md-offset-2">
 			<h4 class="section-heading">Profile</h4><hr />
-			<form class="form-horizontal" name="profileForm" ng-submit="" novalidate>
+			<form class="form-horizontal" name="profileForm" ng-submit="saveProfile(profileForm.$valid)" novalidate>
+				<div class="{{messageClass}}" role="alert">{{message}}</div>
+
 				<div class="form-group">
-					<label for="symbol" class="col-md-2 control-label">Payment mode</label>
+					<label for="fName" class="col-md-2 control-label">First</label>
 					<div class="col-md-10">
-						<select class="form-control" name="paymentMode" required>
-							<option value="sendThroughBank">Send through bank</option>
-							<option value="paypal">PayPal</option>
+						<input type="text" name="fName" id="fName" required ng-model="fName" class="form-control" placeholder="First name" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lName" class="col-md-2 control-label">Last</label>
+					<div class="col-md-10">
+						<input type="text" name="lName" id="lName" required ng-model="lName" class="form-control" placeholder="Last name" />
+					</div>
+				</div>				
+				<div class="form-group">
+					<label for="birthday" class="col-md-2 control-label">Birthday</label>
+					<div class="col-md-10">
+						<input type="text" name="birthday" id="birthday" required ng-model="birthday" class="form-control" placeholder="mm-dd-yyy" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="gender" class="col-md-2 control-label">Gender</label>
+					<div class="col-md-10">
+						<select class="form-control" id="gender" name="gender" ng-model="gender">
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
 						</select>
 					</div>
 				</div>
-
 				<div class="form-group">
-					<label for="symbol" class="col-md-2 control-label">First</label>
-					<div class="col-md-10">
-						<input type="text" name="fName" required class="form-control" placeholder="First name" />
+					<div class="col-md-6 col-md-offset-2">
+						<input type="button" name="changePassword" id="changePassword" class="form-control" value="Change Password" />
 					</div>
 				</div>
-				
-				<input type="text" name="lName" />
-				<input type="text" name="birthday" />
+				<div class="form-group">
+					<label for="email" class="col-md-2 control-label">Email</label>
+					<div class="col-md-10">
+						<input type="text" name="email" id="email" required ng-model="email" class="form-control" placeholder="Email" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="mobile" class="col-md-2 control-label">Mobile</label>
+					<div class="col-md-10">
+						<input type="text" name="mobile" id="mobile" required ng-model="mobileNo" class="form-control" placeholder="09178888888" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" class="btn btn-primary" value="submit" ng-disabled="profileForm.$invalid" />
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>

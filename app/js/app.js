@@ -11,6 +11,7 @@ app.config(['$routeProvider',
 			})
 			.when('/profile', {
 				templateUrl: "partials/profile.html",
+				controller: 'profile'
 			})
 			.when('/log-out', {
 				template: "<h5>Logged-out</h5>",
