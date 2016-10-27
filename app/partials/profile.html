@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h4 class="section-heading">Profile</h4><hr />
+			<form class="form-horizontal" name="profileForm" ng-submit="" novalidate>
+				<div class="form-group">
+					<label for="symbol" class="col-md-2 control-label">Payment mode</label>
+					<div class="col-md-10">
+						<select class="form-control" name="paymentMode" required>
+							<option value="sendThroughBank">Send through bank</option>
+							<option value="paypal">PayPal</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="symbol" class="col-md-2 control-label">First</label>
+					<div class="col-md-10">
+						<input type="text" name="fName" required class="form-control" placeholder="First name" />
+					</div>
+				</div>
+				
+				<input type="text" name="lName" />
+				<input type="text" name="birthday" />
+			</form>
+		</div>
+	</div>
+</div>

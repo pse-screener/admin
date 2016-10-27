@@ -9,6 +9,9 @@ app.config(['$routeProvider',
 				templateUrl: 'partials/login.html',
 				controller: 'beaconCtrl'
 			})
+			.when('/profile', {
+				templateUrl: "partials/profile.html",
+			})
 			.when('/log-out', {
 				template: "<h5>Logged-out</h5>",
 				controller: 'log-out'
