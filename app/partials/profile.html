@@ -3,6 +3,7 @@
 		<div class="col-md-4 col-md-offset-2">
 			<h4 class="section-heading">Profile</h4><hr />
 			<form class="form-horizontal" name="profileForm" ng-submit="saveProfile(profileForm.$valid)" novalidate>
+				<input type="hidden" name="profileId" id="profileId" required="{{profileId}}">
 				<div class="{{messageClass}}" role="alert">{{message}}</div>
 
 				<div class="form-group">

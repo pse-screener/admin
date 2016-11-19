@@ -14,6 +14,7 @@ app.controller('profile', ['$scope', '$http', 'appConstantsFactory',
 				// $scope.messageClass = "alert alert-success";
 				// $scope.message = "Saving has been successful."; 
 
+				$scope.profileId = data.id;
 				$scope.fName = data.fName;
 				$scope.lName = data.lName;
 				$scope.birthday = (data.birthday != null) ? data.birthday : "";
@@ -38,6 +39,7 @@ app.controller('profile', ['$scope', '$http', 'appConstantsFactory',
 				return;
 
 			var formData = {
+				id: $scope.profileId, 
 				fName: $scope.fName,
 				lName: $scope.lName,
 				birthday: $scope.birthday,
@@ -49,16 +51,16 @@ app.controller('profile', ['$scope', '$http', 'appConstantsFactory',
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/profile',
+				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/profile/' + formData.id,
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})
 			.success(function(data) {
 				if (!data['code']) {
-					$scope.editAlertMessage = "alert alert-success";
+					$scope.messageClass = "alert alert-success";
 					$scope.message = "Saving has been successful.";
 				} else {
-					$scope.editAlertMessage = "alert alert-danger";
+					$scope.messageClass = "alert alert-danger";
 					$scope.message = data['message'];
 				}
 			})
