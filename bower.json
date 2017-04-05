@@ -6,16 +6,17 @@
   "license": "",
   "private": true,
   "dependencies": {
-    "angular": "~1.5.8",
-    "angular-route": "~1.5.8",
-    "angular-loader": "~1.5.8",
-    "angular-mocks": "~1.5.8",
+    "angular": "1.5.11",
+    "angular-route": "1.5.11",
+    "angular-loader": "1.5.11",
+    "angular-mocks": "1.5.11",
     "html5-boilerplate": "^5.3.0",
-    "angular-animate": "~1.5.8",
-    "angular-touch": "~1.5.8",
-    "angular-cookies": "1.5.8",
+    "angular-animate": "1.5.11",
+    "angular-touch": "1.5.11",
+    "angular-cookies": "1.5.11",
     "smartmenus": "^1.0.0",
-    "angular-sanitize": "^1.5.8",
-    "angular-bootstrap": "^2.2.0"
+    "angular-sanitize": "~1.5.11",
+    "angular-bootstrap": "^2.2.0",
+    "moment": "^2.18.1"
   }
 }
