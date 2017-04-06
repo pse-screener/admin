@@ -1,4 +1,4 @@
-var DI = ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'ngSanitize', 'ngCookies'];
+var DI = ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'ngSanitize', 'ngCookies', 'mgcrea.ngStrap'];
 
 var app = angular.module('pse', DI);
 
