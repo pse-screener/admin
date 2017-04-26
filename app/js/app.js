@@ -36,5 +36,9 @@ app.config(['$routeProvider',
 				templateUrl: 'partials/subscription.html',
 				controller: 'subscriptionCtrl',
 			})
+			.when('/updatePassword', {
+				templateUrl: 'partials/updatePassword.html',
+				controller: 'passwordCtrl',
+			})
 	}
 ]);

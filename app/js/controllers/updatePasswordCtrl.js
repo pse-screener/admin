@@ -1,22 +1,16 @@
 'use strict'
 
-app.controller('profile', ['$scope', '$http', 'appConstantsFactory',
+app.controller('passwordCtrl', ['$scope', '$http', 'appConstantsFactory',
 	function($scope, $http, appConstantsFactory) {
-		/* get profile info */
+		/* get user info */
 		$http({
 			method	: 'GET',
-			url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/profile',
+			url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/password',
 			headers	: appConstantsFactory.getHeaders(),
 		})
 		.success(function(data) {
 			if (data) {
-				$scope.profileId = data.id;
-				$scope.fName = data.fName;
-				$scope.lName = data.lName;
-				$scope.birthday = (data.birthday != null) ? data.birthday : "";
-				$scope.gender = data.gender;
-				$scope.email = data.email;
-				$scope.mobileNo = data.mobileNo;
+				$scope.userId = data.id;
 			} else {
 				$scope.messageClass = "alert alert-danger";
 				$scope.message = data.message;
@@ -30,24 +24,25 @@ app.controller('profile', ['$scope', '$http', 'appConstantsFactory',
 
 		
 		/* save info */
-		$scope.saveProfile = function(isValid) {
+		$scope.savePassword = function(isValid) {
 			if (!isValid)
 				return;
 
+			if ($scope.newPassword !== $scope.confirmPassword) {
+				$scope.messageClass = "alert alert-danger";
+				$scope.message = "Old password and confirm password do not match.";
+				return;
+			}
+
 			var formData = {
-				id: $scope.profileId, 
-				fName: $scope.fName,
-				lName: $scope.lName,
-				birthday: $scope.birthday,
-				gender: $scope.gender,
-				email: $scope.email,
-				mobileNo: $scope.mobileNo,
+				oldPassword: $scope.oldPassword,
+				newPassword: $scope.newPassword,
 				_method: 'PUT',
 			};
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/profile/' + formData.id,
+				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/password/' + $scope.userId,
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})
