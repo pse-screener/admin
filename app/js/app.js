@@ -40,5 +40,9 @@ app.config(['$routeProvider',
 				templateUrl: 'partials/updatePassword.html',
 				controller: 'passwordCtrl',
 			})
+			.when('/donate', {
+				templateUrl: 'partials/donate.html',
+				controller: 'passwordCtrl',
+			})
 	}
 ]);
