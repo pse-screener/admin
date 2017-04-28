@@ -10,7 +10,7 @@ app.config(['$routeProvider',
 				controller: 'beaconCtrl'
 			})
 			.when('/profile', {
-				templateUrl: "partials/profile.html",
+				templateUrl: "partials/profile/profile.html",
 				controller: 'profile'
 			})
 			.when('/log-out', {
@@ -27,21 +27,21 @@ app.config(['$routeProvider',
 				controller: 'dashboardCtrl'
 			})
 			.when('/add_alert', {
-				templateUrl: 'partials/addAlert.html',
+				templateUrl: 'partials/alert/addAlert.html',
 			})
 			.when('/edit_alert/:id/:symbol/:priceCondition/:price', {
-				templateUrl: 'partials/editAlert.html',
+				templateUrl: 'partials/alert/editAlert.html',
 			})
 			.when('/subscription', {
-				templateUrl: 'partials/subscription.html',
+				templateUrl: 'partials/subscription/subscription.html',
 				controller: 'subscriptionCtrl',
 			})
 			.when('/updatePassword', {
-				templateUrl: 'partials/updatePassword.html',
+				templateUrl: 'partials/profile/updatePassword.html',
 				controller: 'passwordCtrl',
 			})
 			.when('/donate', {
-				templateUrl: 'partials/donate.html',
+				templateUrl: 'partials/donation/donate.html',
 				controller: 'passwordCtrl',
 			})
 	}

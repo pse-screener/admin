@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Donation</div>
+				<div class="panel-body" ng-controller="subscriptionCtrl">
+					<div class="{{subscriptionClassMessage}}" role="alert">{{message}}</div>
+					<div>
+						<p>We encourage everyone to donate any amount to make the site up and running. As with any other websites in the world, this also needs funding for maintenance not limited to domain name, staffing, server maintenance, and SMS load.</p>
+						<p>Currently there's only one way to donate. We are still working on how to make other options possible.
+							<ol>
+								<li><a href="https://www.paypal.com/ph/webapps/mpp/home" target="_blank"><strong>PayPal</strong></a> - if you have PayPal account, it's the most convient. For more info go to <a href="https://www.paypal.com/ph/webapps/mpp/home" target="_blank">PayPal website.</a> PayPal is secured wherein you can also use it to buy items on an e-commerce sites like eBay.</li>
+							</ol>
+						</p>
+						<div class="text-center">
+							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="hosted_button_id" value="VNDAN39ENR6AN">
+								<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+								<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
