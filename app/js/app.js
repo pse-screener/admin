@@ -42,7 +42,10 @@ app.config(['$routeProvider',
 			})
 			.when('/donate', {
 				templateUrl: 'partials/donation/donate.html',
-				controller: 'passwordCtrl',
+			})
+			.when('/lastPrices', {
+				templateUrl: 'partials/lastPrices.html',
+				controller: 'lastPricesCtrl',
 			})
 	}
 ]);

@@ -1,61 +1,55 @@
 <!-- Dahboard -->
-<div class="container" ng-controller="ModalCtrl as $ctrl" class="">
-    <!-- <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title" id="modal-title">Alert</h3>
-        </div>
-        <div class="modal-body" id="modal-body">
-            Are you sure you want to delete the alert?
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
-        </div>
-    </script> -->
+<div class="container" ng-controller="ModalCtrl as $ctrl">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Alerts Panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading section-heading">Alerts</div>
+                <div class="panel-body">
+                    Add alerts up to a maximum of 10 by clicking Add Alert button <br /><br />
+                    <a href="#/add_alert" class="btn btn-default btn-sm" type="button">Add Alert</a>
+                    <a href="" ng-click="alertDeleteAllItems(alerts);" class="btn btn-default btn-sm" type="button">Delete All Alert</a>
+                </div>
 
-    <!-- Alerts Panel -->
-    <div class="panel panel-primary">
-        <div class="panel-heading section-heading">Alerts</div>
-        <div class="panel-body">
-            Add alerts up to a maximum of 15 by clicking Add Alert button <br /><br />
-            <a href="#/add_alert" class="btn btn-default btn-sm" type="button">Add Alert</a>
-            <a href="" ng-click="alertDeleteAllItems(alerts);" class="btn btn-default btn-sm" type="button">Delete All Alert</a>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table table-hover table-condensed">
-                <thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th><th>SMS Sent</th><th>Action</th></tr></thead>
-                <tbody>
-                    <tr ng-repeat="alert in alerts">
-                        <td><a href="#/edit_alert/{{alert.id}}/{{alert.symbol}}/{{alert.priceCondition}}/{{alert.price}}">{{alert.id}}</a></td>
-                        <td>{{alert.symbol}}</td>
-                        <td>{{alert.companyName}}</td>
-                        <td>{{alert.priceCondition == 'movesBelow' ? 'Moves below' : 'Moves above'}}</td>
-                        <td>{{alert.price}}</td>
-                        <td>{{alert.sentToSms == 1 ? 'Yes' : 'No'}}</td>
-                        <td><button type="button" class="btn btn-default btn-xs" ng-click="alertDeleteAnItem(alert.id)">Delete</button></td>
-                    </tr>
-                </tbody>
-            </table>
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th><th>SMS Sent</th><th>Action</th></tr></thead>
+                        <tbody>
+                            <tr ng-repeat="alert in alerts">
+                                <td><a href="#/edit_alert/{{alert.id}}/{{alert.symbol}}/{{alert.priceCondition}}/{{alert.price}}">{{alert.id}}</a></td>
+                                <td>{{alert.symbol}}</td>
+                                <td>{{alert.companyName}}</td>
+                                <td>{{alert.priceCondition == 'movesBelow' ? 'Moves below' : 'Moves above'}}</td>
+                                <td>{{alert.price}}</td>
+                                <td>{{alert.sentToSms == 1 ? 'Yes' : 'No'}}</td>
+                                <td><button type="button" class="btn btn-default btn-xs" ng-click="alertDeleteAnItem(alert.id)">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Subscription Panel -->
-    <div class="panel panel-primary">
-        <div class="panel-heading section-heading">Subscription</div>
-        <div class="panel-body">
-            
-        </div>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Subscription Panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading section-heading">Subscription</div>
+                <div class="panel-body">                    
+                </div>
 
-        <div class="table-responsive">
-            <table class="table table-hover table-condensed">
-                <tbody>
-                    <tr><td>Subscription</td><td>{{type}}</td></tr>
-                    <tr><td>Amount Paid</td><td>{{amountPaid}}</td></tr>
-                    <tr><td>Subscription date</td><td>{{subscriptionDate}}</td></tr>
-                    <tr><td>Expiry date</td><td>{{expiryDate}}</td></tr>
-                </tbody>
-            </table>
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <tbody>
+                            <tr><td>Subscription</td><td>{{type}}</td></tr>
+                            <tr><td>Amount Paid</td><td>{{amountPaid}}</td></tr>
+                            <tr><td>Subscription date</td><td>{{subscriptionDate}}</td></tr>
+                            <tr><td>Expiry date</td><td>{{expiryDate}}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
