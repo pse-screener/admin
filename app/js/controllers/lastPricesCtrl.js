@@ -15,7 +15,6 @@ app.controller('lastPricesCtrl', ['$scope', '$window', '$http', 'appConstantsFac
 		};
 
 		var successCallback = function(response) {
-			console.log(response.data);
 			$scope.lastPrices = response.data;
 		}
 		var errorCallback = function(response) {
