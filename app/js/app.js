@@ -43,9 +43,12 @@ app.config(['$routeProvider',
 			.when('/donate', {
 				templateUrl: 'partials/donation/donate.html',
 			})
-			.when('/lastPrices', {
-				templateUrl: 'partials/lastPrices.html',
-				controller: 'lastPricesCtrl',
+			.when('/lastClosedPrices', {
+				templateUrl: 'partials/lastClosedPrices.html',
+				controller: 'lastClosedPricesCtrl',
+			})
+			.when('/donationCanceled', {
+				templateUrl: 'partials/donation/donationCanceled.html',
 			})
 	}
 ]);
