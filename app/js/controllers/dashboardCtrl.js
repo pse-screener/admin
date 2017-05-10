@@ -18,6 +18,7 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 		var successCallback = function(response) {
 			$scope.alerts = response.data.alerts;
+			$scope.asOf = response.data.asOf;
 		}
 		var errorCallback = function(response) {
 			console.log(response.statusText);
@@ -25,6 +26,9 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 		}
 
 		$http.get(absUrl, configHeaders).then(successCallback, errorCallback);
+
+
+		$('[data-toggle="popover"]').popover();
 
 
 		/** delete an item **/
@@ -67,7 +71,6 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 				console.log("Error: ", data);
 			});
 		}
-
 
 		/* delete all items */
 		$scope.alertDeleteAllItems = function(alertObj) {
