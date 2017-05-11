@@ -1,6 +1,22 @@
+var env = {};
+
+if (window)
+	Object.assign(env, window.__env);
+
 var DI = ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'ngSanitize', 'ngCookies', 'mgcrea.ngStrap'];
 
 var app = angular.module('pse', DI);
+
+app.constant('__env', env);
+
+function disableLogging($logProvider, __env) {
+	$logProvider.debugEnabled(__env.enableDebug);
+}
+
+// Inject dependencies
+disableLogging.$inject = ['$logProvider', '__env'];
+
+app.config(disableLogging);
 
 app.config(['$routeProvider',
 	function($routeProvider) {

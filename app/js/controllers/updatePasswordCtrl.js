@@ -5,7 +5,7 @@ app.controller('passwordCtrl', ['$scope', '$http', 'appConstantsFactory',
 		/* get user info */
 		$http({
 			method	: 'GET',
-			url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/password',
+			url		: appConstantsFactory.getEndpoint() + '/api/v1/password',
 			headers	: appConstantsFactory.getHeaders(),
 		})
 		.success(function(data) {
@@ -42,7 +42,7 @@ app.controller('passwordCtrl', ['$scope', '$http', 'appConstantsFactory',
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/password/' + $scope.userId,
+				url		: appConstantsFactory.getEndpoint() + '/api/v1/password/' + $scope.userId,
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})

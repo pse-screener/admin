@@ -4,14 +4,14 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 	function($scope, $window, $http, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
 			if (!localStorage.getItem("access_token"))
-				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/";
+				$window.location.href = appConstantsFactory.getEndpoint() + "/public/#/";
 			else
-				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/admin/#/";
+				$window.location.href = appConstantsFactory.getEndpoint() + "/admin/#/";
 		} else {
 			console.log("No web storage support. Please use updated browser.");
 		}
 
-		var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/dashboard";
+		var absUrl = appConstantsFactory.getEndpoint() + "/api/v1/dashboard";
 		var configHeaders = {
 			headers: appConstantsFactory.getHeaders()
 		};
@@ -22,7 +22,7 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 		}
 		var errorCallback = function(response) {
 			console.log(response.statusText);
-			$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
+			$window.location.href = appConstantsFactory.getEndpoint() + "/public/#/login";
 		}
 
 		$http.get(absUrl, configHeaders).then(successCallback, errorCallback);
@@ -54,7 +54,7 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert/' + alertId,
+				url		: appConstantsFactory.getEndpoint() + '/api/v1/alert/' + alertId,
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})
@@ -91,7 +91,7 @@ app.controller('dashboardCtrl', ['$scope', '$window', '$http', 'appConstantsFact
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert/' + encodeURI(alertIDs),
+				url		: appConstantsFactory.getEndpoint() + '/api/v1/alert/' + encodeURI(alertIDs),
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})

@@ -27,7 +27,7 @@ app.controller('editAlertCtrl', ['$scope', '$http', '$routeParams', 'appConstant
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert/'.concat($scope.alertId),
+				url		: appConstantsFactory.getEndpoint() + '/api/v1/alert/'.concat($scope.alertId),
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})

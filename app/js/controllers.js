@@ -2,7 +2,7 @@
 
 app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window', 'appConstantsFactory',
 	function($scope, $http, $location, $window, appConstantsFactory) {
-		var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/verify_token";
+		var absUrl = appConstantsFactory.getEndpoint() + "/api/v1/verify_token";
 		var config = {
 			headers: appConstantsFactory.getHeaders()
 		};
@@ -13,7 +13,7 @@ app.controller('beaconCtrl', ['$scope', '$http', '$location', '$window', 'appCon
 		}
 		var errorCallback = function(response) {
 			console.log("Error in beaconCtrl.");
-			$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/";
+			$window.location.href = appConstantsFactory.getEndpoint() + "/public/#/";
 		}
 
 		$http.get(absUrl, config).then(successCallback, errorCallback);
@@ -24,7 +24,7 @@ app.controller('humanResourceCtrl', ['$scope', '$window', '$http', 'appConstants
 	function($scope, $window, $http, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
 			if (!localStorage.getItem("access_token")) {
-				$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
+				$window.location.href = appConstantsFactory.getEndpoint() + "/public/#/login";
 			}
 		} else {
 			console.log("No web storage support.");
@@ -47,7 +47,7 @@ app.controller('log-out', ['$window', 'appConstantsFactory',
 	function($window, appConstantsFactory) {
 		if (typeof(Storage) !== "undefined") {
 			localStorage.removeItem("access_token");
-			$window.location.href = appConstantsFactory.getUnsecuredEndpoint() + "/public/#/login";
+			$window.location.href = appConstantsFactory.getEndpoint() + "/public/#/login";
 		}
 	}
 ]);

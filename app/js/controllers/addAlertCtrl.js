@@ -4,7 +4,7 @@ app.controller('addAlertCtrl', ['$scope', '$http', 'appConstantsFactory',
 	function($scope, $http, appConstantsFactory) {
 		$scope.companyName = "Select company above";
 
-		var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/company";
+		var absUrl = appConstantsFactory.getEndpoint() + "/api/v1/company";
 		var config = {
 			headers: appConstantsFactory.getHeaders(),
 		};
@@ -21,7 +21,7 @@ app.controller('addAlertCtrl', ['$scope', '$http', 'appConstantsFactory',
 
 		// When select company is changed.
 		$scope.selectCompany = function() {
-			var absUrl = appConstantsFactory.getUnsecuredEndpoint() + "/api/v1/company/".concat($scope.companyId);
+			var absUrl = appConstantsFactory.getEndpoint() + "/api/v1/company/".concat($scope.companyId);
 			var config = {
 				headers: {
 					Accept: 'Application/json',
@@ -53,7 +53,7 @@ app.controller('addAlertCtrl', ['$scope', '$http', 'appConstantsFactory',
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/alert',
+				url		: appConstantsFactory.getEndpoint() + '/api/v1/alert',
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})

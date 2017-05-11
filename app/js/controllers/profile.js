@@ -5,7 +5,7 @@ app.controller('profile', ['$scope', '$http', 'appConstantsFactory',
 		/* get profile info */
 		$http({
 			method	: 'GET',
-			url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/profile',
+			url		: appConstantsFactory.getEndpoint() + '/api/v1/profile',
 			headers	: appConstantsFactory.getHeaders(),
 		})
 		.success(function(data) {
@@ -47,7 +47,7 @@ app.controller('profile', ['$scope', '$http', 'appConstantsFactory',
 
 			$http({
 				method	: 'POST',
-				url		: appConstantsFactory.getUnsecuredEndpoint() + '/api/v1/profile/' + formData.id,
+				url		: appConstantsFactory.getEndpoint() + '/api/v1/profile/' + formData.id,
 				data 	: formData,
 				headers	: appConstantsFactory.getHeaders(),
 			})
