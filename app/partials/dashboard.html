@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container" ng-controller="ModalCtrl as $ctrl">
     <div class="row">
         <div class="col-md-12">
@@ -37,4 +38,45 @@
             <hr>
         </div>
     </div>
+=======
+<div class="container" ng-controller="ModalCtrl as $ctrl">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Alerts Panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading section-heading">Alerts</div>
+                <div class="panel-body">
+                    Add alerts up to a maximum of 10 by clicking Add Alert button <br /><br />
+                    <a href="#/add_alert" class="btn btn-default btn-sm" type="button">Add Alert</a>
+                    <a href="" ng-click="alertDeleteAllItems(alerts);" class="btn btn-default btn-sm" type="button">Delete All Alert</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <thead><tr><th>Id</th><th>Symbol</th><th>Company</th><th>Condition</th><th>Price</th><th>Last <span class="glyphicon glyphicon-info-sign" data-container="body" data-toggle="popover" data-placement="top" data-content="As of, {{asOf}}"></span></th><th>SMS Sent</th><th>Delete</th></tr></thead>
+                        <tbody>
+                            <tr ng-repeat="alert in alerts">
+                                <td><a href="#/edit_alert/{{alert.id}}/{{alert.symbol}}/{{alert.priceCondition}}/{{alert.price}}">{{alert.id}}</a></td>
+                                <td>{{alert.symbol}}</td>
+                                <td>{{alert.companyName}}</td>
+                                <td>{{alert.priceCondition == 'movesBelow' ? 'Moves below' : 'Moves above'}} <span class="glyphicon glyphicon-arrow-{{alert.priceCondition == 'movesBelow' ? 'down' : 'up'}}"></span></td>
+                                <td>{{alert.price}}</td>
+                                <td>{{alert.lastClosedPrice}}</td>
+                                <td><span class="glyphicon glyphicon-{{alert.sentToSms == 1 ? 'ok' : 'minus-sign'}}"></span></td>
+                                <td><button type="button" class="btn btn-default btn-xs" ng-click="alertDeleteAnItem(alert.id)"><span class="glyphicon glyphicon-remove"></span></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12"><hr>
+            You can also share your ideas on how to improve the website and its services by giving us feedback and suggestions to <span class="text-primary">jhunexjun@gmail.com</span>.
+            <hr>
+        </div>
+    </div>
+>>>>>>> 77863852b649b0e75421b7a3aaf91274d0217a87
 </div>
