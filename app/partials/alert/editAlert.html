@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
@@ -43,50 +42,4 @@
 			</div>
 		</div>
 	</div>
-=======
-<div class="container">
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading">Edit Alert</div>
-				<div class="panel-body" ng-controller="editAlertCtrl">
-					<div class="{{editAlertMessage}}" role="alert">{{message}}</div>
-					
-					<form class="form-horizontal" name="editAlertForm" ng-submit="processForm(editAlertForm.$valid)" novalidate>
-						<div class="form-group">
-							<label for="symbol" class="col-sm-2 control-label">Ticker</label>
-							<div class="col-sm-10">
-								<input type="text" name="ticker" class="form-control" ng-model="symbol" value="{{symbol}}" disabled required placeholder="Ticker here" />
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="priceCondition" class="col-sm-2 control-label"></label>
-							<div class="col-sm-10">
-								<select class="form-control" name="priceCondition" ng-model="priceCondition" required>
-									<option value="MA">Move above</option>
-									<option value="MB">Move below</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="Price" class="col-sm-2 control-label">Price</label>
-							<div class="col-sm-10">
-								<input type="text" name="price" class="form-control" ng-model="price" value="{{price}}" required placeholder="0.0000" />
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<input type="submit" class="btn btn-primary" value="submit" ng-disabled="editAlertForm.$invalid" />
-							</div>
-						</div>
-					</form>
-
-				</div>
-			</div>
-		</div>
-	</div>
->>>>>>> 77863852b649b0e75421b7a3aaf91274d0217a87
 </div>
